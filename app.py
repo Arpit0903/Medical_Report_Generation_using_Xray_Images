@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import uuid
 import os
 from predict import Predict
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 

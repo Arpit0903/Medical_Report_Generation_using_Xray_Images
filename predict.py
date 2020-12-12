@@ -1,30 +1,15 @@
 import tensorflow as tf
 import numpy as np
-import cv2
-from PIL import Image
 import os
-import matplotlib.pyplot as plt
 import pandas as pd
 import ast
-import PIL.Image
-import nltk
-from nltk.translate.bleu_score import corpus_bleu
 import re
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 df=pd.read_csv('./dataset/x_ray_image_with_report.csv')
 impressions = df['impressions']
-# all_impressions = []
-# for impression in impressions:
-#   all_impressions.append(ast.literal_eval(impression))
 
-all_impressions = list(map(ast.literal_eval, impressions))
-
-impressions=[]
-for i in all_impressions:
-  for j in i:
-    impressions.append(j)
-    
-all_impressions=impressions
+all_impressions = list(map(lambda x: ast.literal_eval(x)[0], impressions))
 
 BATCH_SIZE = 64
 BUFFER_SIZE = 1000
